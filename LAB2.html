@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    //lets assume DB call
+    function getValue(callback){
+        let value = 0;
+        setTimeout(function (){
+            value = 10;
+            //Executing the annonymous function defined in line number 28 to 32
+            callback(value);
+        },1000);
+        return value;
+    }
+
+    //lets assume API call
+    function getNewValue(value,callback){
+        setTimeout(function (){
+            //Executing the annonymous function defined in line number 32 to 34
+            callback(value*100);
+        },1000);
+    }
+
+    //calling function in line number 11
+    getValue(function (value){
+        //calling function defined at line number 22
+        getNewValue(value, function(newvalue){
+        console.log(newvalue);
+    });
+    });
+</script>
+</body>
+</html>
